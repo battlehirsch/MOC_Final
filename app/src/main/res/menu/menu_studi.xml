@@ -6,9 +6,9 @@
         android:orderInCategory="100" app:showAsAction="never" />
 
     <item
-        android:id="@+id/share"
-        android:title="action_search"
+        android:id="@+id/bookmark_studi"
+        android:title="action_bookmark_studi"
         android:orderInCategory="200"
-        android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+        android:icon="@drawable/abc_ratingbar_full_material"
         app:showAsAction="always" />
 </menu>

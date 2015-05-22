@@ -11,6 +11,10 @@ import activities.uniActivity.UniActivity;
 public class University {
     private int id;
     private String name;
+
+
+
+    private int addressId;
     private Address address;
     private String website;
     private boolean flag;
@@ -19,10 +23,10 @@ public class University {
 
 
 
-    public University(int id, String name, Address address, String website, boolean flag) {
+    public University(int id, String name, int addressId, String website, boolean flag) {
         this.id = id;
         this.name = name;
-        this.address = address;
+        this.addressId = addressId;
         this.website = website;
         this.flag = flag;
     }
@@ -35,12 +39,19 @@ public class University {
         {
             universities = new ArrayList<>();
             //public Address(int id, String street, int houseNumber, int zip, String region, String country)
-            universities.add(new University(1, "Hauptuni", new Address(1,"Karlsplatz", 1,1010, "Wien", "Österreich" ),"www.hauptuni.org",false ));
-            universities.add(new University(2, "Technikum", new Address(1,"Höchstädplatz", 6,1200, "Wien", "Österreich" ),"www.techniku-wien.at",false ));
+            universities.add(new University(1, "Hauptuni", 1,"www.hauptuni.org",false ));
+            universities.add(new University(2, "Technikum", 2,"www.techniku-wien.at",false ));
         }
         return universities;
     }
 
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
     public int getId() {
         return id;
     }
@@ -86,7 +97,7 @@ public class University {
         return "University{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", address=" + address +
+                ", address=" + addressId +
                 ", website='" + website + '\'' +
                 ", flag=" + flag +
                 '}';

@@ -4,4 +4,12 @@
     tools:context="activities.uniActivity.UniActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item
+        android:id="@+id/bookmark_uni"
+        android:title="action_bookmark_uni"
+        android:orderInCategory="200"
+        android:icon="@drawable/abc_ratingbar_full_material"
+        app:showAsAction="always"
+        />
 </menu>

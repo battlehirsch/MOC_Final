@@ -48,18 +48,10 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        /*
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        */
 
         switch (item.getItemId()){
-            case R.id.share:
-                System.out.println("Shared clicked");
+            case R.id.bookmark_studi:
+                System.out.println("Bookmark clicked");
                 FilterBookmarks();
                 return true;
 
