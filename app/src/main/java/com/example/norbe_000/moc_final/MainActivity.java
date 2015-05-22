@@ -1,17 +1,33 @@
 package com.example.norbe_000.moc_final;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import activities.studiActivity.StudiActivity;
+import activities.uniActivity.UniActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
+    Button uniButton;
+    Button studiButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        uniButton = (Button) findViewById(R.id.uni_button);
+        uniButton.setOnClickListener(this);
+
+        studiButton = (Button) findViewById(R.id.studi_button);
+        studiButton.setOnClickListener(this);
+        getSupportActionBar().hide();
         //Testcommit
         //Matze war hier
     }
@@ -36,5 +52,25 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        System.out.println("CLICKED:" + v.getId());
+        System.out.println("UNI: " + R.id.uni_button);
+        System.out.println("STUDI: " + R.id.studi_button);
+        if(v.getId() == R.id.uni_button)
+        {
+            Intent intent = new Intent(this, UniActivity.class);
+            startActivity(intent);
+        }
+
+        else if(v.getId() == R.id.studi_button)
+        {
+            Intent intent = new Intent(this, StudiActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 }
