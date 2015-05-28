@@ -15,6 +15,7 @@ import dataClasses.University;
 /**
  * Created by Norbert on 22.05.2015.
  * ANLEITUNG http://www.androidhive.info/2013/09/android-sqlite-database-with-multiple-tables/
+ * To do - Update UniBookmark & Coursebookmark
  */
 public class DataBaseHandler extends SQLiteOpenHelper{
 
@@ -53,18 +54,24 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     //CREATE TABLE STATEMENTS
     //CREATE TABLE COURSE
-    private static final String CREATE_TABLE_COURSE = "CREATE TABLE" + TABLE_COURSE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_FLAG + " INTEGER)";
+    private static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_FLAG + " INTEGER)";
     //CREATE TABLE UNIVERSITY
-    private static final String CREATE_TABLE_UNIVERSITY = "CREATE TABLE" + TABLE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
+    private static final String CREATE_TABLE_UNIVERSITY = "CREATE TABLE " + TABLE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
                                                             + KEY_ADDRESSID + " INTEGER," + KEY_WEBSITE + " TEXT," + KEY_FLAG + " INTEGER)";
     //CREATE TABLE ADRESS
-    private static final String CREATE_TABLE_ADDRESS = "CREATE TABLE" + TABLE_ADRESS + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_STREET + " TEXT," + KEY_HOUSENUMBER + " INTEGER,"
+    private static final String CREATE_TABLE_ADDRESS = "CREATE TABLE " + TABLE_ADRESS + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_STREET + " TEXT," + KEY_HOUSENUMBER + " INTEGER,"
                                                         + KEY_ZIP + " INTEGER," + KEY_REGION + " TEXT," + KEY_COUNTRY + " TEXT)";
     //CREATE TABLE COURSE_UNIVERSITY
-    private static final String CREATE_TABLE_COURSE_UNIVERSITY = "CREATE TABLE" + TABLE_COURSE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COURSEID + " INTEGER," + KEY_UNIID + " INTEGER)";
+    private static final String CREATE_TABLE_COURSE_UNIVERSITY = "CREATE TABLE " + TABLE_COURSE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COURSEID + " INTEGER," + KEY_UNIID + " INTEGER)";
 
+    private static DataBaseHandler dbHandler;
 
-    public DataBaseHandler(Context context){
+    public static DataBaseHandler getInstance(Context con){
+        if(dbHandler == null) dbHandler = new DataBaseHandler(con);
+        return  dbHandler;
+    }
+
+    private DataBaseHandler(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
@@ -75,6 +82,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_UNIVERSITY);
         db.execSQL(CREATE_TABLE_ADDRESS);
         db.execSQL(CREATE_TABLE_COURSE_UNIVERSITY);
+
     }
 
     @Override
@@ -108,7 +116,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
 
         values.put(KEY_NAME,u.getName());
-        values.put(KEY_ADDRESSID,u.getAddress().getId());
+        values.put(KEY_ADDRESSID,u.getAddressId());
         values.put(KEY_WEBSITE,u.getWebsite());
 
         int flag = 0;
@@ -150,7 +158,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return  true;
     }
 
-    public ArrayList<Course> QueryAllCourses(){
+    public ArrayList<Course> queryAllCourses(){
         ArrayList<Course> courseList = new ArrayList<Course>();
         String selectQuery = "SELECT * FROM " + TABLE_COURSE;
 
@@ -169,7 +177,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return courseList;
     }
 
-    public ArrayList<University> QueryAllUniversities(){
+    public ArrayList<University> queryAllUniversities(){
         ArrayList<University> uniList = new ArrayList<University>();
         String selectQuery = "SELECT * FROM " + TABLE_UNIVERSITY;
 
@@ -182,7 +190,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
                 if(c.getInt(c.getColumnIndex(KEY_FLAG))==1) flag = true;
                 University uni = new University(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)),
                         c.getInt(c.getColumnIndex(KEY_ADDRESSID)),c.getString(c.getColumnIndex(KEY_WEBSITE)),flag);
-                uni.setAddress(QueryAddressById(uni.getAddressId()));
+                uni.setAddress(queryAddressById(uni.getAddressId()));
                 uniList.add(uni);
             }while (c.moveToNext());
         }
@@ -190,7 +198,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return  uniList;
     }
 
-    public Address QueryAddressById(int aid){
+    public Address queryAddressById(int aid){
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_ADRESS + " WHERE " + KEY_ID + " = " + aid;
         Cursor c = db.rawQuery(selectQuery,null);
@@ -201,5 +209,47 @@ public class DataBaseHandler extends SQLiteOpenHelper{
             return  a;
         }
         return  null;
+    }
+
+    public int updateUniBookmark(University uni, boolean bookmark){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        int flag = 0;
+
+        if(uni.isFlag()) flag = 1;
+
+        values.put(KEY_FLAG, flag);
+
+        return db.update(TABLE_UNIVERSITY, values, KEY_ID + " = ?", new String[] {String.valueOf(uni.getId())});
+    }
+
+    public int updateStudiBookmark(Course course, boolean bookmark){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        int flag = 0;
+
+        if(course.isFlag()) flag = 1;
+
+        values.put(KEY_FLAG, flag);
+
+        return db.update(TABLE_COURSE, values, KEY_ID + " = ?", new String[] {String.valueOf(course.getId())});
+    }
+
+    public void insertInitialData(){
+        createCourse(new Course(1,"Wirtschaftsinformatik",false));
+        createCourse(new Course(2,"Informatik",false));
+        createCourse(new Course(3,"Biologie",false));
+
+        createAddress(new Address(1, "Hoechstaedtplatz", 6, 1200, "Wien", "Oesterreich"));
+        createAddress(new Address(2, "Bruennerstrasse", 102, 1210, "Wien", "Oesterreich"));
+
+        createUniversity(new University(1, "FH Technikum Wien", 1, "http://www.technikum-wien.at/", false));
+
+        linkCourseToUni(1, 1);
+        linkCourseToUni(2,1);
     }
 }

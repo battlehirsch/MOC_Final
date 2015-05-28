@@ -1,8 +1,11 @@
 package dataClasses;
 
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
+import DataBase.DataBaseHandler;
 import activities.uniActivity.UniActivity;
 
 /**
@@ -34,13 +37,15 @@ public class University {
     public University() {
     }
 
-    public static ArrayList<University> getUniversities() {
+    public static ArrayList<University> getUniversities(Context con) {
+        DataBaseHandler db = DataBaseHandler.getInstance(con);
         if(universities == null)
         {
-            universities = new ArrayList<>();
-            //public Address(int id, String street, int houseNumber, int zip, String region, String country)
-            universities.add(new University(1, "Hauptuni", 1,"www.hauptuni.org",false ));
-            universities.add(new University(2, "Technikum", 2,"www.techniku-wien.at",false ));
+            universities = db.queryAllUniversities();
+            if(universities == null || universities.isEmpty()) {
+                db.insertInitialData();
+                universities = db.queryAllUniversities();
+            }
         }
         return universities;
     }

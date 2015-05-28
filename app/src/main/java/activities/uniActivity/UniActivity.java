@@ -27,7 +27,7 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni);
         list = (ListView)findViewById(R.id.uniList);
-        list.setAdapter(new ArrayAdapter<University>(this, android.R.layout.simple_list_item_1, University.getUniversities()));
+        list.setAdapter(new ArrayAdapter<University>(this, android.R.layout.simple_list_item_1, University.getUniversities(getApplicationContext())));
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
         Intent intent = getIntent();
@@ -57,7 +57,7 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
     }
 
     private void FilterBookmarks() {
-        ArrayList<University> uList = new ArrayList<>(University.getUniversities());
+        ArrayList<University> uList = new ArrayList<>(University.getUniversities(getApplicationContext()));
         System.out.println("Filter == " + bookmarkFilter);
 
         //Alle Elemente anzeigen
