@@ -29,7 +29,7 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studi);
         list = (ListView) findViewById(R.id.courses);
-        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, getCourses()));
+        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, getCourses(getApplicationContext())));
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
         Intent intent = getIntent();
@@ -62,7 +62,7 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
     }
 
     private void FilterBookmarks() {
-        ArrayList<Course> cList = new ArrayList<>(Course.getCourses());
+        ArrayList<Course> cList = new ArrayList<>(Course.getCourses(getApplicationContext()));
         System.out.println("Filter == " + bookmarkFilter);
 
         //Alle Elemente anzeigen

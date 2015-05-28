@@ -1,6 +1,10 @@
 package dataClasses;
 
+import android.content.Context;
+
 import java.util.ArrayList;
+
+import DataBase.DataBaseHandler;
 
 /**
  * Created by matthias rohrmoser on 22.05.2015.
@@ -12,16 +16,17 @@ public class Course {
     private ArrayList<University> universities;
     private static ArrayList<Course> courses;
 
-    public static ArrayList<Course> getCourses() {
-        if(courses == null){
-            courses = new ArrayList<Course>();
-            courses.add(new Course(1,"aa", false));
-            courses.add(new Course(2,"ab", false));
-            courses.add(new Course(3,"ba", false ));
-            courses.add(new Course(4,"bb", false ));
-            courses.add(new Course(5,"cb", false ));
-            courses.add(new Course(6,"ca", false ));
+    public static ArrayList<Course> getCourses(Context con) {
+        DataBaseHandler db = DataBaseHandler.getInstance(con);
+        if(courses == null)
+        {
+            courses = db.queryAllCourses();
+            if(courses == null || courses.isEmpty()) {
+                db.insertInitialData();
+                courses = db.queryAllCourses();
+            }
         }
+        db.closeDB();
         return courses;
     }
 

@@ -248,8 +248,15 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         createAddress(new Address(2, "Bruennerstrasse", 102, 1210, "Wien", "Oesterreich"));
 
         createUniversity(new University(1, "FH Technikum Wien", 1, "http://www.technikum-wien.at/", false));
+        createUniversity(new University(2, "Wirtschaftsuniversitaet Wien", 2,"http://www.wu.ac.at/",false));
 
         linkCourseToUni(1, 1);
         linkCourseToUni(2,1);
+    }
+
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
     }
 }

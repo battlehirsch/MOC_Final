@@ -14,9 +14,6 @@ import activities.uniActivity.UniActivity;
 public class University {
     private int id;
     private String name;
-
-
-
     private int addressId;
     private Address address;
     private String website;
@@ -47,6 +44,7 @@ public class University {
                 universities = db.queryAllUniversities();
             }
         }
+        db.closeDB();
         return universities;
     }
 
