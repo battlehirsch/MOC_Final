@@ -23,6 +23,15 @@
         android:layout_alignRight="@+id/studi_button"
         android:layout_alignEnd="@+id/studi_button"
         android:layout_marginTop="74dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:id="@+id/maps_button"
+        android:layout_alignTop="@+id/uni_button"
+        android:layout_alignRight="@+id/uni_button"
+        android:layout_alignEnd="@+id/uni_button"
+        android:layout_marginTop="74dp" />
 
     <ImageView
         android:layout_width="wrap_content"

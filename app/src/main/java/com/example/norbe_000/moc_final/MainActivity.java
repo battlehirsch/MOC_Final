@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import activities.studiActivity.StudiActivity;
+import activities.testmaps.testMaps;
 import activities.uniActivity.UniActivity;
 
 
@@ -18,6 +19,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     Button uniButton;
     Button studiButton;
+    Button mapsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         studiButton = (Button) findViewById(R.id.studi_button);
         studiButton.setOnClickListener(this);
+
+        mapsButton = (Button) findViewById(R.id.maps_button);
+        mapsButton.setOnClickListener(this);
+
         getSupportActionBar().hide();
         //Testcommit
         //Matze war hier
@@ -68,6 +74,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         else if(v.getId() == R.id.studi_button)
         {
             Intent intent = new Intent(this, StudiActivity.class);
+            startActivity(intent);
+        }
+        else if(v.getId() == R.id.maps_button)
+        {
+            Intent intent = new Intent(this, testMaps.class);
             startActivity(intent);
         }
 
