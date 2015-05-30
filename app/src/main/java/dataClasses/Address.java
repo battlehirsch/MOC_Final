@@ -70,4 +70,9 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return this.getStreet() + " " + this.getHouseNumber() + ", " + this.getZip() + " " + this.getRegion() + ", " + this.getCountry();
+    }
 }

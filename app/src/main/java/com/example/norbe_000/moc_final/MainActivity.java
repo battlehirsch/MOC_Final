@@ -19,7 +19,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     Button uniButton;
     Button studiButton;
-    Button mapsButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +29,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         studiButton = (Button) findViewById(R.id.studi_button);
         studiButton.setOnClickListener(this);
 
-        mapsButton = (Button) findViewById(R.id.maps_button);
-        mapsButton.setOnClickListener(this);
 
         getSupportActionBar().hide();
         //Testcommit
@@ -74,11 +71,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         else if(v.getId() == R.id.studi_button)
         {
             Intent intent = new Intent(this, StudiActivity.class);
-            startActivity(intent);
-        }
-        else if(v.getId() == R.id.maps_button)
-        {
-            Intent intent = new Intent(this, testMaps.class);
             startActivity(intent);
         }
 

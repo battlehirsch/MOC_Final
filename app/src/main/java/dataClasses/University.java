@@ -97,12 +97,6 @@ public class University {
 
     @Override
     public String toString() {
-        return "University{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address=" + addressId +
-                ", website='" + website + '\'' +
-                ", flag=" + flag +
-                '}';
+        return this.getName();
     }
 }

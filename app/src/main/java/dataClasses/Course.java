@@ -67,6 +67,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return String.format("%02d, %10.10s %s", getId(), getName(), isFlag());
+        return this.getName();
     }
 }

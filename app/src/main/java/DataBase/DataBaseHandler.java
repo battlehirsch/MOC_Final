@@ -244,14 +244,11 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         createCourse(new Course(2,"Informatik",false));
         createCourse(new Course(3,"Biologie",false));
 
-        createAddress(new Address(1, "Hoechstaedtplatz", 6, 1200, "Wien", "Oesterreich"));
-        createAddress(new Address(2, "Bruennerstrasse", 102, 1210, "Wien", "Oesterreich"));
+        createAddress(new Address(1, "Welthandelsplatz", 1, 1020, "Wien", "Austria"));
 
-        createUniversity(new University(1, "FH Technikum Wien", 1, "http://www.technikum-wien.at/", false));
-        createUniversity(new University(2, "Wirtschaftsuniversitaet Wien", 2,"http://www.wu.ac.at/",false));
+        createUniversity(new University(1, "Wirtschaftsuniversitaet Wien", 1,"http://www.wu.ac.at/",false));
 
         linkCourseToUni(1, 1);
-        linkCourseToUni(2,1);
     }
 
     public void closeDB() {
