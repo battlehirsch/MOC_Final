@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<universities version="1.0">
+	<!--<name></name>
+	<website></website>
+	<address>
+		<street></street>
+		<housenoumber></housenoumber>
+		<zip></zip>
+		<region></region>
+		<country></country>
+	</address>-->
+		<universitiy>
+			<name>FH Technikum Wien</name>
+			<website>http://www.technikum-wien.at</website>
+			<address>
+				<street>Höchstädtplatz</street>
+				<housenoumber>5</housenoumber>
+				<zip>1200 Wien</zip>
+				<region>Wien</region>
+				<country>Österreich</country>
+			</address>
+		</universitiy>
+
+	<universitiy>	
+		<name>FH Wiener Neustadt</name>
+		<website>http://www.fhwn.ac.at</website>
+		<address>
+			<street>Johannes Gutenberg Straße</street>
+			<housenoumber>3</housenoumber>
+			<zip>2700 </zip>
+			<region>Wiener Neustadt</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Universität Wien</name>
+		<website>http://www.univie.ac.at/</website>
+		<address>
+			<street>Doktor Karl Lueger Ring</street>
+			<housenoumber>1</housenoumber>
+			<zip>1010</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Technische Universität Wien</name>
+		<website>http://www.tuwien.ac.at</website>
+		<address>
+			<street>Karlsplatz</street>
+			<housenoumber>13</housenoumber>
+			<zip>1040 Wien</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+</universities>

@@ -1,8 +1,11 @@
 package dataClasses;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import DataBase.DataBaseHandler;
 
@@ -30,7 +33,6 @@ public class Course {
         db.closeDB();
         return courses;
     }
-
     public Course() {
     }
 
@@ -79,8 +81,30 @@ public class Course {
         this.type = type;
     }
 
+
     @Override
     public String toString() {
         return this.getName();
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, type);
+    }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Course other = (Course) obj;
+        return Objects.equals(this.name, other.name)
+                && Objects.equals(this.type, other.type);
     }
 }

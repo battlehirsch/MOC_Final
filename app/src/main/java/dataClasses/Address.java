@@ -1,7 +1,7 @@
 package dataClasses;
 
 /**
- * Created by matthias on 22.05.2015.
+ * Created by Matthias Rohrmoser on 22.05.2015.
  */
 public class Address {
     public Address() {
@@ -71,8 +71,40 @@ public class Address {
         this.country = country;
     }
 
+
+
     @Override
     public String toString() {
         return this.getStreet() + " " + this.getHouseNumber() + ", " + this.getZip() + " " + this.getRegion() + ", " + this.getCountry();
+
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        if (getHouseNumber() != address.getHouseNumber()) return false;
+        if (getZip() != address.getZip()) return false;
+        if (!getStreet().equals(address.getStreet())) return false;
+        if (!getRegion().equals(address.getRegion())) return false;
+        return getCountry().equals(address.getCountry());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getStreet().hashCode();
+        result = 31 * result + getHouseNumber();
+        result = 31 * result + getZip();
+        result = 31 * result + getRegion().hashCode();
+        result = 31 * result + getCountry().hashCode();
+        return result;
+    }
+
+
 }

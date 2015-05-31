@@ -12,13 +12,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.norbe_000.moc_final.R;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.Marker;
 
 import java.util.ArrayList;
 
-import activities.studiActivity.StudiActivity;
-import activities.testmaps.testMaps;
+import activities.testmaps.MapsActivity;
 import dataClasses.University;
 
 public class UniActivity extends ActionBarActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
@@ -104,7 +101,7 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         System.out.println("item " + position);
-        Intent intent = new Intent(this, testMaps.class);
+        Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra("address", ((University) list.getItemAtPosition(position)).getAddress().toString());
         intent.putExtra("name", ((University) list.getItemAtPosition(position)).getName());
         intent.putExtra("website",((University) list.getItemAtPosition(position)).getWebsite());

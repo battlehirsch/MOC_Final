@@ -1,10 +1,8 @@
 package activities.testmaps;
 
 import android.content.Intent;
-import android.location.Geocoder;
 import android.net.Uri;
 import android.os.StrictMode;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,7 +27,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,10 +35,8 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import dataClasses.Address;
 
-
-public class testMaps extends ActionBarActivity implements GoogleMap.OnInfoWindowClickListener{
+public class MapsActivity extends ActionBarActivity implements GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap map;
     private UiSettings mapSettings;
@@ -57,7 +52,7 @@ public class testMaps extends ActionBarActivity implements GoogleMap.OnInfoWindo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_maps);
+        setContentView(R.layout.activity_maps);
         getSupportActionBar().hide();
 
         Intent intent = getIntent();

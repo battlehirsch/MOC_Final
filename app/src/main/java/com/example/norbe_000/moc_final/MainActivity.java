@@ -1,9 +1,8 @@
 package com.example.norbe_000.moc_final;
 
 import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.wifi.p2p.WifiP2pManager;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,16 +10,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import activities.studiActivity.StudiActivity;
-import activities.testmaps.testMaps;
 import activities.uniActivity.UniActivity;
 import helper.DialogHelper;
+import helper.IDialogListener;
+import helper.UniXmlParser;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener, DialogHelper.DialogListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener, IDialogListener {
 
     Button uniButton;
     Button studiButton;
+
+
+    //region onCreate/onCreateOptionsMenu/onOptionsItemSelected
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +39,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         studiButton = (Button) findViewById(R.id.studi_button);
         studiButton.setOnClickListener(this);
         getSupportActionBar().hide();
-        //Testcommit
-        //Matze war hier
+        TestXml();
     }
 
     @Override
@@ -56,6 +63,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         return super.onOptionsItemSelected(item);
     }
+    //endregion
+
 
     @Override
     public void onClick(View v) {
@@ -78,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private void showCourseDialog() {
         DialogFragment dialog = new DialogHelper();
-        dialog.show(getFragmentManager(),"CourseDialog");
+        dialog.show(getFragmentManager(), "CourseDialog");
     }
 
     @Override
@@ -94,4 +103,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         intent.putExtra("type","b");
         startActivity(intent);
     }
+
+    public void TestXml(){
+        try {
+            InputStream in = getResources().openRawResource(R.raw.university);
+            in.toString();
+            UniXmlParser.getInstance(in).parse();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

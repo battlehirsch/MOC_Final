@@ -13,30 +13,32 @@ import com.example.norbe_000.moc_final.R;
 import activities.studiActivity.StudiActivity;
 
 /**
- * Created by Battlehirsch on 31.05.2015.
+ * Created by Norbert Fesel on 31.05.2015.
  */
 public class DialogHelper extends DialogFragment{
+     IDialogListener dListener;
 
-    public interface DialogListener{
-        public void onDialogPositiveClick(DialogFragment dialog);
-        public void onDialogNegativeClick(DialogFragment dialog);
-    }
-
-    DialogListener dListener;
+    /**
+     * Tries to cast the activity to a type of IDialogListener so the caller
+     * of the dialog can be recieved weither the positive or negative option
+     * is clicked
+     * IF the caller does not implement IDialogListener an exception is thrown
+     * @param activity
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            dListener = (DialogListener) activity;
+            dListener = (IDialogListener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
                     + " must implement DialogListener");
         }
     }
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

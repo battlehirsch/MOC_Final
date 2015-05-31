@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<courses version=1.0>
+	<course>
+		<name>Wirtschaftsinformatik</name>
+		<type>Bachelor</type>
+		<Universities> 
+			<University>FH Technikum Wien</University>
+			<University>Universität Wien</University>
+			<University>Technische Universität Wien</University>
+		</Universities>
+	</course>
+
+	<course>
+		<name>Informatik</name>
+		<type>Bachelor</type>
+		<Universities> 
+			<University>FH Technikum Wien</University>
+			<University>Universität Wien</University>
+			<University>Technische Universität Wien</University>
+			<University>FH Wiener Neustadt</University>
+		</Universities>
+	</course>
+</courses>

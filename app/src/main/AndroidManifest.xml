@@ -40,7 +40,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAJY2O5AgvSHQpDBGHhu836WHMtpzAsL6o" />
+            android:value="AIzaSyDF8pNWXilNuFcjqWnu5AnIiT6yePHqI5s" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -52,7 +52,7 @@
         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
         <activity
-            android:name="activities.testmaps.testMaps"
+            android:name="activities.testmaps.MapsActivity"
             android:label="@string/title_activity_test_maps" >
         </activity>
     </application>

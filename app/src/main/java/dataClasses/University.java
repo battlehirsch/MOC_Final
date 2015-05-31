@@ -1,9 +1,12 @@
 package dataClasses;
 
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import DataBase.DataBaseHandler;
 import activities.uniActivity.UniActivity;
@@ -20,9 +23,6 @@ public class University {
     private boolean flag;
     private ArrayList<Course> courses;
     private static ArrayList<University> universities;
-
-
-
     public University(int id, String name, int addressId, String website, boolean flag) {
         this.id = id;
         this.name = name;
@@ -95,8 +95,40 @@ public class University {
         this.flag = flag;
     }
 
+//    @Override
+//    public String toString() {
+//        return this.getName();
+//    }
+
+
     @Override
     public String toString() {
-        return this.getName();
+        return "University{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", website='" + website + '\'' +
+                ", address=" + address +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        University that = (University) o;
+
+        if (!getName().equals(that.getName())) return false;
+        if (!getAddress().equals(that.getAddress())) return false;
+        return getWebsite().equals(that.getWebsite());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getAddress().hashCode();
+        result = 31 * result + getWebsite().hashCode();
+        return result;
     }
 }
