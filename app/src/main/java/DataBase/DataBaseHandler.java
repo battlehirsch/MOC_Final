@@ -37,6 +37,9 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     private static final String KEY_NAME = "name";
     private static final String KEY_FLAG = "flag";
 
+    //Course column names
+    private static final String KEY_TYPE = "type";
+
     //University column names
     private static final String KEY_ADDRESSID = "addressid";
     private static final String KEY_WEBSITE = "website";
@@ -54,7 +57,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     //CREATE TABLE STATEMENTS
     //CREATE TABLE COURSE
-    private static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_FLAG + " INTEGER)";
+    private static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_TYPE + " TEXT," + KEY_FLAG + " INTEGER)";
     //CREATE TABLE UNIVERSITY
     private static final String CREATE_TABLE_UNIVERSITY = "CREATE TABLE " + TABLE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
                                                             + KEY_ADDRESSID + " INTEGER," + KEY_WEBSITE + " TEXT," + KEY_FLAG + " INTEGER)";
@@ -99,6 +102,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, c.getName());
+        values.put(KEY_TYPE, c.getType());
 
         int flag = 0;
         if(c.isFlag()) flag = 1;
@@ -240,9 +244,9 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     }
 
     public void insertInitialData(){
-        createCourse(new Course(1,"Wirtschaftsinformatik",false));
-        createCourse(new Course(2,"Informatik",false));
-        createCourse(new Course(3,"Biologie",false));
+        createCourse(new Course(1,"Wirtschaftsinformatik","Bachelor",false));
+        createCourse(new Course(2,"Informatik","Master",false));
+        createCourse(new Course(3,"Biologie","Bachelor",false));
 
         createAddress(new Address(1, "Welthandelsplatz", 1, 1020, "Wien", "Austria"));
 

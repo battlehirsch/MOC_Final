@@ -48,11 +48,11 @@ public class testMaps extends ActionBarActivity implements GoogleMap.OnInfoWindo
     private  MarkerOptions marker;
     // URL prefix to the geocoder
     private static final String GEOCODER_REQUEST_PREFIX_FOR_XML = "http://maps.google.com/maps/api/geocode/xml";
-    float lat;
-    float lng;
-    String website;
-    String name;
-    String address;
+    private float lat;
+    private float lng;
+    private String website;
+    private String name;
+    private String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +87,7 @@ public class testMaps extends ActionBarActivity implements GoogleMap.OnInfoWindo
         {
             mapSettings = map.getUiSettings();
             mapSettings.setZoomControlsEnabled(true);
+
 
             LatLng addresslatlong = new LatLng(lat,lng);
 

@@ -12,6 +12,7 @@ import DataBase.DataBaseHandler;
 public class Course {
     private int id;
     private String name;
+    private String type;
     private boolean flag;
     private ArrayList<University> universities;
     private static ArrayList<Course> courses;
@@ -39,7 +40,12 @@ public class Course {
         this.flag = flag;
     }
 
-
+    public Course(int id, String name, String type, boolean flag) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.flag = flag;
+    }
 
     public int getId() {
         return id;
@@ -63,6 +69,14 @@ public class Course {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

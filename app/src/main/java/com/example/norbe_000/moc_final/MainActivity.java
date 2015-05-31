@@ -1,5 +1,6 @@
 package com.example.norbe_000.moc_final;
 
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
@@ -13,9 +14,10 @@ import android.widget.Button;
 import activities.studiActivity.StudiActivity;
 import activities.testmaps.testMaps;
 import activities.uniActivity.UniActivity;
+import helper.DialogHelper;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener, DialogHelper.DialogListener {
 
     Button uniButton;
     Button studiButton;
@@ -28,8 +30,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         studiButton = (Button) findViewById(R.id.studi_button);
         studiButton.setOnClickListener(this);
-
-
         getSupportActionBar().hide();
         //Testcommit
         //Matze war hier
@@ -70,10 +70,28 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         else if(v.getId() == R.id.studi_button)
         {
-            Intent intent = new Intent(this, StudiActivity.class);
-            startActivity(intent);
+            showCourseDialog();
         }
 
 
+    }
+
+    private void showCourseDialog() {
+        DialogFragment dialog = new DialogHelper();
+        dialog.show(getFragmentManager(),"CourseDialog");
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        Intent intent = new Intent(this, StudiActivity.class);
+        intent.putExtra("type","m");
+        startActivity(intent);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        Intent intent = new Intent(this, StudiActivity.class);
+        intent.putExtra("type","b");
+        startActivity(intent);
     }
 }
