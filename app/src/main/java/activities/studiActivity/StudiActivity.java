@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import activities.uniActivity.UniActivity;
 import dataClasses.Course;
+import helper.CourseFilter;
 
 import static dataClasses.Course.getCourses;
 
@@ -34,6 +35,8 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
     *   2 = display no bookmarks
     */
     private int bookmarkFilter = 1;
+    private char typeFilter = 'x';
+    ArrayList<Course> allCourses;
 
 
     //region METHODS: onCreate/onCreateOptionsMenu/onOptionsItemSelected
@@ -41,8 +44,15 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studi);
+        typeFilter = this.getIntent().getCharExtra("type", 'x');
+
+
+        allCourses = Course.getCourses(getApplicationContext());
+
         list = (ListView) findViewById(R.id.courses);
-        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, getCourses(getApplicationContext())));
+
+        list.setAdapter(new ArrayAdapter<Course>(this,
+                android.R.layout.simple_list_item_1, CourseFilter.filterCoursesByType(allCourses,typeFilter)));
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
         Intent intent = getIntent();
@@ -134,46 +144,27 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
          * Method for filtering the bookmarks is called whenever the user tapped the star button in the action bar
          */
     private void FilterBookmarks() {
-        ArrayList<Course> cList = new ArrayList<>(Course.getCourses(getApplicationContext()));
-        System.out.println("Filter == " + bookmarkFilter);
+        ArrayList<Course> cList = CourseFilter.filterCoursesByBookmark(allCourses, typeFilter);
+        CourseFilter.filterCoursesByBookmark(cList, bookmarkFilter);
 
         //Display all elements
         if(bookmarkFilter == 0 ){
-            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, cList));
-            bookmarkFilter++;
-
-            Toast.makeText(this,"Alle anzeigen", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this,"Alle anzeigen", Toast.LENGTH_SHORT).show();
         }
+
         //Display bookmarks only
         else if(bookmarkFilter == 1){
-
-            for (int i = 0; i < cList.size(); i++){
-                if(!cList.get(i).isFlag()){
-                    cList.remove(i--);
-                }
-            }
-
-            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, cList));
             Toast.makeText(this, "Nur Lesezeichen anzeigen", Toast.LENGTH_SHORT).show();
-
-            bookmarkFilter++;
-
         }
         //Don't display any bookmarks
         else{
-
-            for (int i = 0; i < cList.size(); i++){
-                if(cList.get(i).isFlag()){
-                    cList.remove(i--);
-                }
-            }
-
-            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, cList));
             Toast.makeText(this,"Keine Lesezeichen anzeigen", Toast.LENGTH_SHORT).show();
-
-            bookmarkFilter = 0;
         }
 
+        if(++bookmarkFilter > 1){
+            bookmarkFilter = 0;
+        }
+        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, cList));
     }
     //endregion
 }

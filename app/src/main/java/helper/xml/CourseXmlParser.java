@@ -1,4 +1,4 @@
-package helper;
+package helper.xml;
 
 import android.content.Context;
 
@@ -9,7 +9,7 @@ import org.w3c.dom.NodeList;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import DataBase.DataBaseHandler;
+import helper.database.DataBaseHandler;
 import dataClasses.Course;
 import dataClasses.University;
 
@@ -71,7 +71,7 @@ public class CourseXmlParser extends XmlParser {
                             }
                         }
 
-                        ArrayList<University> unis = DataBaseHandler.getInstance(context).getUniversitiesByName(uniNames);
+                        ArrayList<University> unis = DataBaseHandler.getInstance(context).queryUniversitiesByName(uniNames);
                         course.setUniversities(unis);
                         break;
                 }

@@ -1,15 +1,11 @@
 package dataClasses;
 
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import DataBase.DataBaseHandler;
-import activities.uniActivity.UniActivity;
+import helper.database.DataBaseHandler;
 
 /**
  * Created by matthias rohrmoser on 22.05.2015.

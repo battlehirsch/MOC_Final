@@ -14,9 +14,12 @@ import android.widget.Toast;
 import com.example.norbe_000.moc_final.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import activities.testmaps.MapsActivity;
+import dataClasses.Course;
 import dataClasses.University;
+import helper.database.DataBaseHandler;
 
 public class UniActivity extends ActionBarActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
@@ -26,8 +29,21 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni);
+
+        int courseId = getIntent().getIntExtra("course", -1);
+        DataBaseHandler dbh = DataBaseHandler.getInstance(getApplicationContext());
+        List<University> universityList;
+        if(courseId != -1){
+            Course c = dbh.queryCourseById(courseId);
+            universityList = dbh.queryUniversitiesByCourse(c);
+        }
+
+        else{
+            universityList = University.getUniversities(getApplicationContext());
+        }
+
         list = (ListView)findViewById(R.id.uniList);
-        list.setAdapter(new ArrayAdapter<University>(this, android.R.layout.simple_list_item_1, University.getUniversities(getApplicationContext())));
+        list.setAdapter(new ArrayAdapter<University>(this, android.R.layout.simple_list_item_1, universityList));
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
         Intent intent = getIntent();

@@ -1,4 +1,4 @@
-package helper;
+package helper.interfaces;
 
 import android.content.Context;
 import android.content.res.Resources;

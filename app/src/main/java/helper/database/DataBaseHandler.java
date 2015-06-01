@@ -1,4 +1,4 @@
-package DataBase;
+package helper.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -35,40 +34,35 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     private static final String TABLE_ADRESS = "adresses";
     private static final String TABLE_COURSE_UNIVERSITY = "course_university";
     private static final String TABLE_FILE_VERSION = "file_version";
-
     //Common column names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_FLAG = "flag";
-
     //Course column names
     private static final String KEY_TYPE = "type";
-
     //University column names
     private static final String KEY_ADDRESSID = "addressid";
     private static final String KEY_WEBSITE = "website";
-
     //Address column names
     private static final String KEY_STREET = "street";
     private static final String KEY_HOUSENUMBER = "housenumber";
     private static final String KEY_ZIP = "zip";
     private static final String KEY_REGION = "region";
     private static final String KEY_COUNTRY = "country";
-
     //Course_University column names
     private  static final String KEY_COURSEID = "courseid";
     private  static final String KEY_UNIID = "uniid";
-
     //file_version colum name
     private static final String KEY_FILE_NAME = "filetype";
     private static final String KEY_FILE_VERSION = "fileversion";
+
 
     //CREATE TABLE STATEMENTS
     //CREATE TABLE COURSE
     private static final String CREATE_TABLE_COURSE = "CREATE TABLE " + TABLE_COURSE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_TYPE + " TEXT," + KEY_FLAG + " INTEGER)";
     //CREATE TABLE UNIVERSITY
     private static final String CREATE_TABLE_UNIVERSITY = "CREATE TABLE " + TABLE_UNIVERSITY + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
-                                                            + KEY_ADDRESSID + " INTEGER," + KEY_WEBSITE + " TEXT," + KEY_FLAG + " INTEGER)";
+            + KEY_ADDRESSID + " INTEGER," + KEY_WEBSITE + " TEXT," + KEY_FLAG + " INTEGER)";
     //CREATE TABLE ADRESS
     private static final String CREATE_TABLE_ADDRESS = "CREATE TABLE " + TABLE_ADRESS + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_STREET + " TEXT," + KEY_HOUSENUMBER + " INTEGER,"
                                                         + KEY_ZIP + " INTEGER," + KEY_REGION + " TEXT," + KEY_COUNTRY + " TEXT)";
@@ -109,7 +103,8 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public float getFileVersion(String file){
+    //region query methods
+    public float queryFileVersionByName(String file){
         SQLiteDatabase db = getReadableDatabase();
         String query = String.format("SELECT MAX(%s) as %s FROM %s WHERE %s = '%s'",KEY_FILE_VERSION,KEY_FILE_VERSION,TABLE_FILE_VERSION, KEY_FILE_NAME, file );
         Cursor c = db.rawQuery(query, null);
@@ -122,31 +117,88 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     }
 
-    public void insertFileVersion(String file, float fileVersion){
-        SQLiteDatabase db = getWritableDatabase();
+    public ArrayList<Course> queryAllCourses(){
+        ArrayList<Course> courseList = new ArrayList<Course>();
+        String selectQuery = "SELECT * FROM " + TABLE_COURSE;
 
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery,null);
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_FILE_NAME, file);
-        values.put(KEY_FILE_VERSION, fileVersion);
-        db.insert(TABLE_FILE_VERSION,null, values);
+        if(c.moveToFirst()){
+            do{
+                boolean flag = false;
+                if(c.getInt(c.getColumnIndex(KEY_FLAG))==1) flag = true;
+                Course course = new Course(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)), c.getString(c.getColumnIndex(KEY_TYPE)),flag);
+                course.setUniversities(queryUniversitiesByCourse(course));
+                courseList.add(course);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return courseList;
+    }
+
+    public ArrayList<University> queryAllUniversities(){
+        ArrayList<University> uniList = new ArrayList<University>();
+        String selectQuery = "SELECT * FROM " + TABLE_UNIVERSITY;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery,null);
+
+        if(c.moveToFirst()){
+            do{
+                boolean flag = false;
+                if(c.getInt(c.getColumnIndex(KEY_FLAG))==1) flag = true;
+                University uni = new University(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)),
+                        c.getInt(c.getColumnIndex(KEY_ADDRESSID)),c.getString(c.getColumnIndex(KEY_WEBSITE)),flag);
+                uni.setAddress(queryAddressById(uni.getAddressId()));
+                uniList.add(uni);
+            }while (c.moveToNext());
+        }
+        c.close();
+        return  uniList;
+    }
+
+    public Address queryAddressById(int aid){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_ADRESS + " WHERE " + KEY_ID + " = " + aid;
+        Cursor c = db.rawQuery(selectQuery,null);
+        if(c!=null){
+            c.moveToFirst();
+            Address a = new Address(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_STREET)),c.getInt(c.getColumnIndex(KEY_HOUSENUMBER)),c.getInt(c.getColumnIndex(KEY_ZIP)),c.getString(c.getColumnIndex(KEY_REGION)),c.getString(c.getColumnIndex(KEY_COUNTRY)));
+            c.close();
+            return  a;
+        }
+        return  null;
+    }
+
+    public ArrayList<University> queryUniversitiesByName(ArrayList<String> uniNames) {
+
+        ArrayList<University> unis = queryAllUniversities();
+        ArrayList<University> returnUni = new ArrayList<>();
+
+        for(String s : uniNames){
+            for(University u : unis){
+                if(s.equals(u.getName())){
+                    returnUni.add(u);
+                }
+            }
+        }
+
+        return returnUni;
+
 
     }
-    public boolean createCourse(Course c){
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_NAME, c.getName());
-        values.put(KEY_TYPE, c.getType());
+    public int queryCourseIdByObject(Course course) {
+        String query = String.format("SELECT id FROM %s WHERE %s = '%s' AND %s = '%s' ", TABLE_COURSE, KEY_TYPE, course.getType(), KEY_NAME, course.getName());
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            return cursor.getInt(cursor.getColumnIndex(KEY_ID));
+        }
 
-        int flag = 0;
-        if(c.isFlag()) flag = 1;
-
-        values.put(KEY_FLAG, flag);
-
-        db.insert(TABLE_COURSE, null, values);
-
-        return  true;
+        else
+            return -1;
     }
 
     public ArrayList<Address> queryAllAddresses(){
@@ -172,6 +224,69 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return adrList;
     }
 
+    public ArrayList<University> queryUniversitiesByCourse(Course course) {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+
+        //Als erstes Link zu den Ids bekommen
+        String query = String.format("SELECT * FROM %s where %s=%d",TABLE_COURSE_UNIVERSITY, KEY_COURSEID, course.getId());
+
+
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        ArrayList<University> universities = new ArrayList<>();
+        ArrayList<University> allUnis = queryAllUniversities();
+
+        if(cursor.moveToFirst()){
+            do{
+                for(University u : allUnis)
+                    if(cursor.getInt(cursor.getColumnIndex(KEY_COURSEID))==course.getId()
+                            && cursor.getInt(cursor.getColumnIndex(KEY_UNIID))==u.getId()){
+                        universities.add(u);
+                    }
+            }while (cursor.moveToNext());
+        }
+
+            return universities;
+
+    }
+
+    public Course queryCourseById(int id){
+        String query = String.format("SELECT * FROM %s where %s=%d", TABLE_COURSE, KEY_ID, id);
+
+        Cursor c =  getReadableDatabase().rawQuery(query,null);
+
+        c.moveToFirst();
+        boolean flag = (c.getInt(c.getColumnIndex(KEY_FLAG))) == 1 ? true : false;
+        return new Course(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)), flag);
+    }
+    //endregion
+
+    //region insertmethods
+    public void insertFileVersion(String file, float fileVersion){
+        SQLiteDatabase db = getWritableDatabase();
+
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FILE_NAME, file);
+        values.put(KEY_FILE_VERSION, fileVersion);
+        db.insert(TABLE_FILE_VERSION, null, values);
+
+    }
+    public boolean createCourse(Course c){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, c.getName());
+        values.put(KEY_TYPE, c.getType());
+
+        int flag = 0;
+        if(c.isFlag()) flag = 1;
+
+        values.put(KEY_FLAG, flag);
+
+        db.insert(TABLE_COURSE, null, values);
+
+        return  true;
+    }
     public boolean createUniversity(University u){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -190,7 +305,6 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
         return  true;
     }
-
     public boolean createUniversityFromXml(University u){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -234,7 +348,6 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
         return  true;
     }
-
     public boolean createAddress(Address a){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -250,6 +363,8 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
         return true;
     }
+    //endregion
+
 
     public boolean linkCourseToUni(int cid, int uid){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -272,58 +387,6 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return false;
     }
 
-    public ArrayList<Course> queryAllCourses(){
-        ArrayList<Course> courseList = new ArrayList<Course>();
-        String selectQuery = "SELECT * FROM " + TABLE_COURSE;
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery,null);
-
-        if(c.moveToFirst()){
-            do{
-                boolean flag = false;
-                if(c.getInt(c.getColumnIndex(KEY_FLAG))==1) flag = true;
-                Course course = new Course(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)),flag);
-                courseList.add(course);
-            } while (c.moveToNext());
-        }
-        c.close();
-        return courseList;
-    }
-
-    public ArrayList<University> queryAllUniversities(){
-        ArrayList<University> uniList = new ArrayList<University>();
-        String selectQuery = "SELECT * FROM " + TABLE_UNIVERSITY;
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery,null);
-
-        if(c.moveToFirst()){
-            do{
-                boolean flag = false;
-                if(c.getInt(c.getColumnIndex(KEY_FLAG))==1) flag = true;
-                University uni = new University(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_NAME)),
-                        c.getInt(c.getColumnIndex(KEY_ADDRESSID)),c.getString(c.getColumnIndex(KEY_WEBSITE)),flag);
-                uni.setAddress(queryAddressById(uni.getAddressId()));
-                uniList.add(uni);
-            }while (c.moveToNext());
-        }
-        c.close();
-        return  uniList;
-    }
-
-    public Address queryAddressById(int aid){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + TABLE_ADRESS + " WHERE " + KEY_ID + " = " + aid;
-        Cursor c = db.rawQuery(selectQuery,null);
-        if(c!=null){
-            c.moveToFirst();
-            Address a = new Address(c.getInt(c.getColumnIndex(KEY_ID)),c.getString(c.getColumnIndex(KEY_STREET)),c.getInt(c.getColumnIndex(KEY_HOUSENUMBER)),c.getInt(c.getColumnIndex(KEY_ZIP)),c.getString(c.getColumnIndex(KEY_REGION)),c.getString(c.getColumnIndex(KEY_COUNTRY)));
-            c.close();
-            return  a;
-        }
-        return  null;
-    }
 
     public int updateUniBookmark(University uni, boolean bookmark){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -353,6 +416,9 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return db.update(TABLE_COURSE, values, KEY_ID + " = ?", new String[] {String.valueOf(course.getId())});
     }
 
+    /**
+     * TESTMETHOD
+     */
     public void insertInitialData(){
         createCourse(new Course(1,"Wirtschaftsinformatik","Bachelor",false));
         createCourse(new Course(2,"Informatik","Master",false));
@@ -371,33 +437,5 @@ public class DataBaseHandler extends SQLiteOpenHelper{
             db.close();
     }
 
-    public ArrayList<University> getUniversitiesByName(ArrayList<String> uniNames) {
 
-        ArrayList<University> unis = queryAllUniversities();
-        ArrayList<University> returnUni = new ArrayList<>();
-
-       for(String s : uniNames){
-           for(University u : unis){
-               if(s.equals(u.getName())){
-                   returnUni.add(u);
-               }
-           }
-       }
-
-        return returnUni;
-
-
-    }
-
-    public int getCourseIdByObject(Course course) {
-        String query = String.format("SELECT id from %s where %s = '%s' and %s = '%s' ",TABLE_COURSE , KEY_TYPE, course.getType(), KEY_NAME, course.getName());
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        if(cursor.moveToFirst()){
-            return cursor.getInt(cursor.getColumnIndex(KEY_ID));
-        }
-
-        else
-            return -1;
-    }
 }

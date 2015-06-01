@@ -11,13 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import DataBase.DataBaseHandler;
 import activities.studiActivity.StudiActivity;
 import activities.uniActivity.UniActivity;
 import helper.DataVersionHandler;
 import helper.DialogHelper;
-import helper.IDialogListener;
-import helper.IResourceListener;
+import helper.interfaces.IDialogListener;
+import helper.interfaces.IResourceListener;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener, IDialogListener, IResourceListener {
@@ -67,17 +66,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        System.out.println("CLICKED:" + v.getId());
-        System.out.println("UNI: " + R.id.uni_button);
-        System.out.println("STUDI: " + R.id.studi_button);
-        if(v.getId() == R.id.uni_button)
-        {
+        if(v.getId() == R.id.uni_button){
             Intent intent = new Intent(this, UniActivity.class);
             startActivity(intent);
         }
 
-        else if(v.getId() == R.id.studi_button)
-        {
+        else if(v.getId() == R.id.studi_button){
             showCourseDialog();
         }
 
@@ -91,14 +85,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         Intent intent = new Intent(this, StudiActivity.class);
-        intent.putExtra("type","m");
+        intent.putExtra("type",'m');
         startActivity(intent);
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         Intent intent = new Intent(this, StudiActivity.class);
-        intent.putExtra("type","b");
+        intent.putExtra("type",'b');
         startActivity(intent);
     }
 

@@ -7,9 +7,12 @@ import com.example.norbe_000.moc_final.R;
 
 import java.util.ArrayList;
 
-import DataBase.DataBaseHandler;
+import helper.database.DataBaseHandler;
 import dataClasses.Course;
 import dataClasses.University;
+import helper.interfaces.IResourceListener;
+import helper.xml.CourseXmlParser;
+import helper.xml.UniXmlParser;
 
 /**
  * Created by matthias rohrmoser on 01.06.2015.
@@ -39,16 +42,16 @@ public class DataVersionHandler {
         CourseXmlParser courseParser = CourseXmlParser.getInstance(resources.openRawResource(R.raw.courses));
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
 
-        System.out.printf("COURSE== fileVersion:%f @@@@ databaseVersion:%f\n\n", courseParser.getFileVersion(),dbh.getFileVersion("course"));
-        return (courseParser.getFileVersion() == dbh.getFileVersion("course"));
+        System.out.printf("COURSE== fileVersion:%f @@@@ databaseVersion:%f\n\n", courseParser.getFileVersion(),dbh.queryFileVersionByName("course"));
+        return (courseParser.getFileVersion() == dbh.queryFileVersionByName("course"));
     }
 
     private boolean checkUniversityVersion() {
         Resources resources = listener.getActivityResources();
         UniXmlParser uniParser = UniXmlParser.getInstance(resources.openRawResource(R.raw.university));
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
-        System.out.printf("UNI== fileVersion:%f @@@@ databaseVersion:%f\n\n", uniParser.getFileVersion(),dbh.getFileVersion("university"));
-        return (uniParser.getFileVersion() == dbh.getFileVersion("university"));
+        System.out.printf("UNI== fileVersion:%f @@@@ databaseVersion:%f\n\n", uniParser.getFileVersion(),dbh.queryFileVersionByName("university"));
+        return (uniParser.getFileVersion() == dbh.queryFileVersionByName("university"));
     }
 
     public void updateCourse(){
@@ -60,7 +63,7 @@ public class DataVersionHandler {
 
         for(Course c : courses){
             dbh.createCourse(c);
-            c.setId(dbh.getCourseIdByObject(c));
+            c.setId(dbh.queryCourseIdByObject(c));
 
             for(University u : c.getUniversities()){
                 dbh.linkCourseToUni(c.getId(),u.getId());

@@ -1,13 +1,10 @@
 package dataClasses;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import DataBase.DataBaseHandler;
+import helper.database.DataBaseHandler;
 
 /**
  * Created by matthias rohrmoser on 22.05.2015.
@@ -22,13 +19,8 @@ public class Course {
 
     public static ArrayList<Course> getCourses(Context con) {
         DataBaseHandler db = DataBaseHandler.getInstance(con);
-        if(courses == null)
-        {
+        if(courses == null){
             courses = db.queryAllCourses();
-            if(courses == null || courses.isEmpty()) {
-                db.insertInitialData();
-                courses = db.queryAllCourses();
-            }
         }
         db.closeDB();
         return courses;

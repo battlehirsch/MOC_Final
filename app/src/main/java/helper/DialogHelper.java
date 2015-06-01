@@ -5,12 +5,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.norbe_000.moc_final.R;
-
-import activities.studiActivity.StudiActivity;
+import helper.interfaces.IDialogListener;
 
 /**
  * Created by Norbert Fesel on 31.05.2015.
