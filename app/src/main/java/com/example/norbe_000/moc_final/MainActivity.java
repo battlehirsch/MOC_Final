@@ -1,6 +1,7 @@
 package com.example.norbe_000.moc_final;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
@@ -10,19 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
+import DataBase.DataBaseHandler;
 import activities.studiActivity.StudiActivity;
 import activities.uniActivity.UniActivity;
+import helper.DataVersionHandler;
 import helper.DialogHelper;
 import helper.IDialogListener;
-import helper.UniXmlParser;
+import helper.IResourceListener;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener, IDialogListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener, IDialogListener, IResourceListener {
 
     Button uniButton;
     Button studiButton;
@@ -32,15 +30,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new DataVersionHandler(this).fullProcedure();
+
         setContentView(R.layout.activity_main);
         uniButton = (Button) findViewById(R.id.uni_button);
         uniButton.setOnClickListener(this);
-
         studiButton = (Button) findViewById(R.id.studi_button);
         studiButton.setOnClickListener(this);
         getSupportActionBar().hide();
-        TestXml();
-    }
+}
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,7 +81,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             showCourseDialog();
         }
 
-
     }
 
     private void showCourseDialog() {
@@ -104,16 +102,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    public void TestXml(){
-        try {
-            InputStream in = getResources().openRawResource(R.raw.university);
-            in.toString();
-            UniXmlParser.getInstance(in).parse();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+    @Override
+    public Context getActivityContext() {
+        return getApplicationContext();
     }
 
-
-
+    @Override
+    public Resources getActivityResources() {
+        return getResources();
+    }
 }

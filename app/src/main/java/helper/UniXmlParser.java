@@ -1,16 +1,20 @@
 package helper;
 
+import android.app.Application;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 
+import DataBase.DataBaseHandler;
 import dataClasses.Address;
 import dataClasses.University;
 
 /**
- * Created by matthias on 31.05.2015.
+ * Created by matthias rohrmoser on 31.05.2015.
  */
 public class UniXmlParser extends XmlParser {
     private static UniXmlParser ourInstance;
@@ -26,19 +30,10 @@ public class UniXmlParser extends XmlParser {
         super(xml);
     }
 
-    public void parse(){
-        /*
-        <universities version=1.0>
-            <name></name>
-            <website></website>
-            <address>
-                <street></street>
-                <housenoumber></housenoumber>
-                <zip></zip>
-                <region></region>
-                <country></country>
-	        </address>
-         */
+
+    public ArrayList<University> parse(){
+        System.out.println("--------------------------------------------------------");
+        ArrayList<University> universities = new ArrayList<>();
 
         //get root element ("UNIVERSITIES")
         Element root = document.getDocumentElement();
@@ -48,7 +43,7 @@ public class UniXmlParser extends XmlParser {
         for (int i = 0; i < children.getLength(); i++) {
             Node child = children.item(i);
             //if child is not university continue because it's only a linebreak similar node
-            if (child.getNodeName().equals("universitiy"))
+            if (!(child.getNodeName().equals("universitiy")))
                 continue;
 
             University uni = new University();
@@ -56,8 +51,8 @@ public class UniXmlParser extends XmlParser {
             NodeList grandChildren = child.getChildNodes();
             for (int j = 0; j < grandChildren.getLength(); j++) {
                 Node grandChild = grandChildren.item(j);
-
                 switch(grandChild.getNodeName()){
+
                     case "name":
                         uni.setName(grandChild.getTextContent());
                         break;
@@ -68,7 +63,12 @@ public class UniXmlParser extends XmlParser {
                         Address adr = new Address();
                         NodeList greatGrandChildren = grandChild.getChildNodes();
                         for (int k = 0; k < greatGrandChildren.getLength(); k++) {
+                            System.out.printf("***" +
+                                    "k=%d ;@; ListLength=%d",k,greatGrandChildren.getLength());
                             Node greatGrandChild = greatGrandChildren.item(k);
+                            System.out.println(greatGrandChild.getNodeName());
+                            if(greatGrandChild.getNodeName().equals("#text"))
+                                continue;
 
                             switch (greatGrandChild.getNodeName()){
                                 case "street":
@@ -90,15 +90,19 @@ public class UniXmlParser extends XmlParser {
                                     adr.setCountry(greatGrandChild.getTextContent());
                                     break;
                             }//END SWITCH(greatgrandChild)=ADRESS
-
+                            System.out.println(adr);
                             uni.setAddress(adr);
                         }
-                        System.out.println(uni);
+
                         break;
                 }//END SWITCH(grandChild)
+
+
             }
-
+            universities.add(uni);
+            System.out.println(uni);
+            System.out.println("--------------------------------------------------");
         }
-
+        return universities;
     }
 }

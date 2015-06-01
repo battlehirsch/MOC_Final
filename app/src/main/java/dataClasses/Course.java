@@ -82,29 +82,18 @@ public class Course {
     }
 
 
+    public ArrayList<University> getUniversities() {
+        return universities;
+    }
+
+    public void setUniversities(ArrayList<University> universities) {
+        this.universities = universities;
+    }
+
     @Override
     public String toString() {
         return this.getName();
     }
 
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, type);
-    }
-
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Course other = (Course) obj;
-        return Objects.equals(this.name, other.name)
-                && Objects.equals(this.type, other.type);
-    }
 }

@@ -16,7 +16,7 @@
 			<address>
 				<street>Höchstädtplatz</street>
 				<housenoumber>5</housenoumber>
-				<zip>1200 Wien</zip>
+				<zip>1200</zip>
 				<region>Wien</region>
 				<country>Österreich</country>
 			</address>
@@ -28,7 +28,7 @@
 		<address>
 			<street>Johannes Gutenberg Straße</street>
 			<housenoumber>3</housenoumber>
-			<zip>2700 </zip>
+			<zip>2700</zip>
 			<region>Wiener Neustadt</region>
 			<country>Österreich</country>
 		</address>
@@ -52,7 +52,7 @@
 		<address>
 			<street>Karlsplatz</street>
 			<housenoumber>13</housenoumber>
-			<zip>1040 Wien</zip>
+			<zip>1040</zip>
 			<region>Wien</region>
 			<country>Österreich</country>
 		</address>

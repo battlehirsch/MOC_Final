@@ -80,31 +80,4 @@ public class Address {
     }
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Address address = (Address) o;
-
-        if (getHouseNumber() != address.getHouseNumber()) return false;
-        if (getZip() != address.getZip()) return false;
-        if (!getStreet().equals(address.getStreet())) return false;
-        if (!getRegion().equals(address.getRegion())) return false;
-        return getCountry().equals(address.getCountry());
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getStreet().hashCode();
-        result = 31 * result + getHouseNumber();
-        result = 31 * result + getZip();
-        result = 31 * result + getRegion().hashCode();
-        result = 31 * result + getCountry().hashCode();
-        return result;
-    }
-
-
 }

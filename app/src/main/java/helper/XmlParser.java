@@ -1,6 +1,7 @@
 package helper;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -31,5 +32,11 @@ public class XmlParser
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public float getFileVersion(){
+        Element root = document.getDocumentElement();
+
+        return Float.parseFloat(root.getAttribute("version"));
     }
 }

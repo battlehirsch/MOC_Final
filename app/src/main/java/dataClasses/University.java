@@ -95,40 +95,21 @@ public class University {
         this.flag = flag;
     }
 
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+
+//
 //    @Override
 //    public String toString() {
-//        return this.getName();
+//        return "University{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", website='" + website + '\'' +
+//                ", address=" + address +
+//                '}';
 //    }
 
 
-    @Override
-    public String toString() {
-        return "University{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", website='" + website + '\'' +
-                ", address=" + address +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        University that = (University) o;
-
-        if (!getName().equals(that.getName())) return false;
-        if (!getAddress().equals(that.getAddress())) return false;
-        return getWebsite().equals(that.getWebsite());
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getName().hashCode();
-        result = 31 * result + getAddress().hashCode();
-        result = 31 * result + getWebsite().hashCode();
-        return result;
-    }
 }

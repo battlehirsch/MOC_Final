@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<courses version=1.0>
+<courses version="1.0">
+
+	<!--<course>-->
+		<!--<name></name>-->
+		<!--<type></type>-->
+		<!--<Universities>-->
+			<!--<University></University>-->
+			<!--<University></University>-->
+			<!--<University></University>-->
+		<!--</Universities>-->
+	<!--</course>-->
 	<course>
 		<name>Wirtschaftsinformatik</name>
 		<type>Bachelor</type>
-		<Universities> 
+		<universities>
 			<University>FH Technikum Wien</University>
 			<University>Universität Wien</University>
 			<University>Technische Universität Wien</University>
-		</Universities>
+		</universities>
 	</course>
 
 	<course>
 		<name>Informatik</name>
 		<type>Bachelor</type>
-		<Universities> 
+		<universities>
 			<University>FH Technikum Wien</University>
 			<University>Universität Wien</University>
 			<University>Technische Universität Wien</University>
 			<University>FH Wiener Neustadt</University>
-		</Universities>
+		</universities>
+
 	</course>
+
+	<course>
+	<name>Informatik</name>
+	<type>Master</type>
+	<universities>
+		<University>FH Wiener Neustadt</University>
+	</universities>
+	</course>
+
+	<course>
+		<name>Informatikdidaktik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Wien</University>
+			<University>Technische Universität Wien</University>
+		</universities>
+	</course>
+
 </courses>
