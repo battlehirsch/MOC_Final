@@ -27,6 +27,7 @@
 		<universities>
 			<University>FH Technikum Wien</University>
 			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
 			<University>Technische Universität Wien</University>
 			<University>FH Wiener Neustadt</University>
 		</universities>
@@ -47,6 +48,907 @@
 		<universities>
 			<University>Universität Wien</University>
 			<University>Technische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Architektur</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Joanneum</University>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+			<University>Technische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Architektur</name>
+		<type>Master</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Joanneum</University>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+			<University>Technische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Betriebswirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Wirtschaftsuniversität Wien</University>
+			<University>Universität Klagenfurt</University>
+			<University>FH Vorarlberg</University>
+			<University>FH Salzburg</University>
+			<University>FH Oberösterreich</University>
+			<University>Donau-Universität Krems</University>
+			<University>FH des bfi Wien</University>
+			<University>FH Krems</University>
+			<University>EWS Wien</University>
+			<University>FH Kärnten</University>
+			<University>FH Joanneum</University>
+			<University>FH Wiener Neustadt</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Betriebswirtschaft</name>
+		<type>Master</type>
+		<universities>
+			<University>Wirtschaftsuniversität Wien</University>
+			<University>Universität Klagenfurt</University>
+			<University>FH Vorarlberg</University>
+			<University>FH Salzburg</University>
+			<University>FH Oberösterreich</University>
+			<University>Donau-Universität Krems</University>
+			<University>FH des bfi Wien</University>
+			<University>FH Krems</University>
+			<University>EWS Wien</University>
+			<University>FH Kärnten</University>
+			<University>FH Joanneum</University>
+			<University>FH Wiener Neustadt</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Advanced Nursing Practice</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Krems</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Afrikawissenschaften</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Agrarwissenschaften</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Allgemeine Gesundheits- und Krankenpflege</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Wiener Neustadt</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Alte Geschichte und Altertumskunde</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Angewandte Informatik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Angewandte Informatik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Anglistik und Amerikanistik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Bank- und Finanzwirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH des bfi Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Bank- und Versicherungswirtschaft</name>
+		<type>Master</type>
+		<universities>
+			<University>FH Joanneum</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Bauingenieurwesen</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Oberösterreich</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Bauingenieurwesen</name>
+		<type>Master</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Oberösterreich</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biologie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Wien</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biologie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Wien</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biomedical Engineering</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Technikum Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biomedizin und Biotechnologie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Veterinärmedizinische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biomedizin und Biotechnologie</name>
+		<type>Master</type>
+		<universities>
+			<University>Veterinärmedizinische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Biomedizinische Analytik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Wiener Neustadt</University>
+			<University>FH Kärnten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Joanneum</University>
+			<University>FH Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Chemie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Innsbruck</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Chemie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Innsbruck</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Clinical Engineering</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Campus Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Controlling, Rechnungswesen und Finanzmanagement</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Oberösterreich</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Diätologie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH St.Pölten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Joanneum</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Diätologie</name>
+		<type>Master</type>
+		<universities>
+			<University>FH St.Pölten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Joanneum</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Electronic Engineering</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Technikum Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Electronics and Business</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Technikum Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Elektrotechnik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Technische Universität Graz</University>
+			<University>FH Vorarlberg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Elektrotechnik</name>
+		<type>Master</type>
+		<universities>
+			<University>Technische Universität Graz</University>
+			<University>FH Vorarlberg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Erdwissenschaften</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Erdwissenschaften</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Ergotherapie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Campus Wien</University>
+			<University>FH Joanneum</University>
+			<University>FH Salzburg</University>
+			<University>FH Wiener Neustadt</University>
+			<University>FH Kärnten</University>
+			<University>FH Krems</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Europäische Ethnologie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Innsbruck</University>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Europäische Wirtschaft und Unternehmensführung</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH des bfi Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Film-,TV- und Medienproduktion</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH des bfi Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Forstwirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Forstwirtschaft</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Geographie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Geographie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Germanistik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Germanistik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Geschichte</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Geschichte</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Gesundheits- und Krankenpflege</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Salzburg</University>
+			<University>FH Krems</University>
+			<University>FH Campus Wien</University>
+			<University>Universität Innsbruck</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Hebamme</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Krems</University>
+			<University>FH Campus Wien</University>
+			<University>FH Joanneum</University>
+			<University>FH Salzburg</University>
+			<University>FH Kärnten</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Informationsmanagement</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Joanneum</University>
+			<University>Universität Klagenfurt</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Internationale Betriebswirtschaft</name>
+		<type>Master</type>
+		<universities>
+			<University>FH Voralrberg</University>
+			<University>Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Internationales Wirtschaftsingenieurwesen</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Technikum Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Judaistik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Judaistik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Kulturtechnik und Wasserwirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Kunstgeschichte</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Kunstgeschichte</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Lebensmittel- und Biotechnologie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Maschinenbau</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Technikum Wien</University>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Maschinenbau</name>
+		<type>Master</type>
+		<universities>
+			<University>FH Kärnten</University>
+			<University>FH Technikum Wien</University>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Mathematik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Mathematik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Graz</University>
+			<University>Universität Salzburg</University>
+			<University>Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Netzwerktechnik und Kommunikation</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Kärnten</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Orthoptik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Salzburg</University>
+			<University>FH Campus Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Pädagogik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Salzburg</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Pferdewissenschaften</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+			<University>Veterinärmedizinische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Pferdewissenschaften</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+			<University>Veterinärmedizinische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Philosophie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Philosophie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Radiologietechnologie</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Wiener Neustadt</University>
+			<University>FH Joanneum</University>
+			<University>FH Salzburg</University>
+			<University>FH Campus Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Romanistik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Slawistik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+			<University>Universität Salzburg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Soziale Arbeit</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH St.Pölten</University>
+			<University>FH Campus Wien</University>
+			<University>FH Kärnten</University>
+			<University>FH Oberösterreich</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Soziologie</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Salzburg</University>
+			<University>Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Spanisch</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Universität Innsbruck</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Technische Informatik</name>
+		<type>Master</type>
+		<universities>
+			<University>Technische Universität Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Technische Mathematik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Technische Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Technische Mathematik</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+			<University>Technische Universität Wien</University>
+			<University>Universität Innsbruck</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Tourismusmanagement und Freizeitwirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Krems</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Transkulturelle Kommunikation</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Umwelt- und Bioressourcenmanagement</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Umwelt- und Bioressourcenmanagement</name>
+		<type>Master</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Unternehmensführung</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Krems</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Urbane Erneuerbare Energietechnologien</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>FH Technikum Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Verfahrenstechnik</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Verfahrenstechnik</name>
+		<type>Master</type>
+		<universities>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+		</universities>
+	</course>
+
+
+	<course>
+		<name>Volkswirtschaftslehre</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Wien</University>
+			<University>Universität Graz</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Weinbau, Önologie und Weinwirtschaft</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität für Bodenkultur Wien</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Wirtschaft und Recht</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Universität Klagenfurt</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Wirtschaftsingenieurwesen</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+			<University>FH Wiener Neustadt</University>
+			<University>FH Vorarlberg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Wirtschaftsingenieurwesen</name>
+		<type>Master</type>
+		<universities>
+			<University>Technische Universität Wien</University>
+			<University>Technische Universität Graz</University>
+			<University>FH Wiener Neustadt</University>
+			<University>FH Vorarlberg</University>
+		</universities>
+	</course>
+
+	<course>
+		<name>Wirtschaftsrecht</name>
+		<type>Bachelor</type>
+		<universities>
+			<University>Wirtschaftsuniversität Wien</University>
 		</universities>
 	</course>
 

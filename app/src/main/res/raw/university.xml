@@ -35,6 +35,18 @@
 	</universitiy>
 
 	<universitiy>
+		<name>Universität Graz</name>
+		<website>http://www.uni-graz.at/</website>
+		<address>
+			<street>Universitätsplatz</street>
+			<housenoumber>3</housenoumber>
+			<zip>8010</zip>
+			<region>Graz</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
 		<name>Universität Wien</name>
 		<website>http://www.univie.ac.at/</website>
 		<address>
@@ -57,4 +69,222 @@
 			<country>Österreich</country>
 		</address>
 	</universitiy>
+
+	<universitiy>
+		<name>FH Kärnten</name>
+		<website>http://www.fh-kaernten.at</website>
+		<address>
+			<street>Europastraße</street>
+			<housenoumber>4</housenoumber>
+			<zip>9524</zip>
+			<region>Villach</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Joanneum</name>
+		<website>http://www.fh-joanneum.at</website>
+		<address>
+			<street>Alte Poststraße</street>
+			<housenoumber>154</housenoumber>
+			<zip>8020</zip>
+			<region>Graz</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Technische Universität Graz</name>
+		<website>http://portal.tugraz.at</website>
+		<address>
+			<street>Rechbauerstrasse</street>
+			<housenoumber>12</housenoumber>
+			<zip>8010</zip>
+			<region>Graz</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Universität für Bodenkultur Wien</name>
+		<website>http://www.boku.ac.at/</website>
+		<address>
+			<street>Gregor-Mendel-Straße</street>
+			<housenoumber>33</housenoumber>
+			<zip>1180</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Universität Innsbruck</name>
+		<website>http://www.uibk.ac.at/</website>
+		<address>
+			<street>Innrain</street>
+			<housenoumber>52</housenoumber>
+			<zip>6020</zip>
+			<region>Innsbruck</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>EWS Wien</name>
+		<website>http://www.ews-wien.at</website>
+		<address>
+			<street>Liechtensteinstraße</street>
+			<housenoumber>3</housenoumber>
+			<zip>1090</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Krems</name>
+		<website>http://www.fh-krems.ac.at</website>
+		<address>
+			<street>Piaristengasse</street>
+			<housenoumber>1</housenoumber>
+			<zip>3500</zip>
+			<region>Krems</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH des bfi Wien</name>
+		<website>http://www.fh-vie.ac.at/</website>
+		<address>
+			<street>Wohlmutstraße</street>
+			<housenoumber>22</housenoumber>
+			<zip>1020</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Donau-Universität Krems</name>
+		<website>http://www.donau-uni.ac.at</website>
+		<address>
+			<street>Dr.-Karl-Dorrek-Straße</street>
+			<housenoumber>30</housenoumber>
+			<zip>3500</zip>
+			<region>Krems</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Oberösterreich</name>
+		<website>http://www.fh-ooe.at</website>
+		<address>
+			<street>Franz-Fritsch-Straße</street>
+			<housenoumber>11</housenoumber>
+			<zip>4600</zip>
+			<region>Wels</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Salzburg</name>
+		<website>http://www.fh-salzburg.ac.at/</website>
+		<address>
+			<street>Markt</street>
+			<housenoumber>136</housenoumber>
+			<zip>5431</zip>
+			<region>Kuchl</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Vorarlberg</name>
+		<website>http://www.fhv.at</website>
+		<address>
+			<street>Hochschulstraße</street>
+			<housenoumber>1</housenoumber>
+			<zip>6850</zip>
+			<region>Dornbirn</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Universität Klagenfurt</name>
+		<website>http://www.uni-klu.ac.at</website>
+		<address>
+			<street>Universitätsstraße</street>
+			<housenoumber>65</housenoumber>
+			<zip>9020</zip>
+			<region>Klagenfurt</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Wirtschaftsuniversität Wien</name>
+		<website>http://www.wu.ac.at/</website>
+		<address>
+			<street>Welthandelsplatz</street>
+			<housenoumber>1</housenoumber>
+			<zip>1020</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Universität Salzburg</name>
+		<website>http://www.uni-salzburg.at/</website>
+		<address>
+			<street>Kapitelgasse</street>
+			<housenoumber>4</housenoumber>
+			<zip>5020</zip>
+			<region>Salzburg</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH Campus Wien</name>
+		<website>http://www.fh-campuswien.ac.at</website>
+		<address>
+			<street>Favoritenstraße</street>
+			<housenoumber>226</housenoumber>
+			<zip>1100</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>Veterinärmedizinische Universität Wien</name>
+		<website>http://www.vetmeduni.ac.at</website>
+		<address>
+			<street>Veterinärplatz</street>
+			<housenoumber>1</housenoumber>
+			<zip>1210</zip>
+			<region>Wien</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+	<universitiy>
+		<name>FH St.Pölten</name>
+		<website>http://www.fhstp.ac.at</website>
+		<address>
+			<street>Matthias Corvinus-Straße</street>
+			<housenoumber>15</housenoumber>
+			<zip>3100</zip>
+			<region>St.Pölten</region>
+			<country>Österreich</country>
+		</address>
+	</universitiy>
+
+
 </universities>
