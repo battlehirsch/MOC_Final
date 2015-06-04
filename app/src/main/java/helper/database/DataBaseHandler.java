@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import dataClasses.Address;
 import dataClasses.Course;
@@ -119,7 +121,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     public ArrayList<Course> queryAllCourses(){
         ArrayList<Course> courseList = new ArrayList<Course>();
-        String selectQuery = "SELECT * FROM " + TABLE_COURSE;
+        String selectQuery = "SELECT * FROM " + TABLE_COURSE + " ORDER BY " + KEY_NAME + " ASC";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery,null);
@@ -139,7 +141,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 
     public ArrayList<University> queryAllUniversities(){
         ArrayList<University> uniList = new ArrayList<University>();
-        String selectQuery = "SELECT * FROM " + TABLE_UNIVERSITY;
+        String selectQuery = "SELECT * FROM " + TABLE_UNIVERSITY + " ORDER BY " + KEY_NAME + " ASC";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery,null);
@@ -244,6 +246,8 @@ public class DataBaseHandler extends SQLiteOpenHelper{
                     }
             }while (cursor.moveToNext());
         }
+
+        Collections.sort(universities);
 
             return universities;
 
@@ -388,7 +392,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     }
 
 
-    public int updateUniBookmark(University uni, boolean bookmark){
+    public int updateUniBookmark(University uni){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -402,7 +406,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return db.update(TABLE_UNIVERSITY, values, KEY_ID + " = ?", new String[] {String.valueOf(uni.getId())});
     }
 
-    public int updateStudiBookmark(Course course, boolean bookmark){
+    public int updateStudiBookmark(Course course){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -416,20 +420,6 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         return db.update(TABLE_COURSE, values, KEY_ID + " = ?", new String[] {String.valueOf(course.getId())});
     }
 
-    /**
-     * TESTMETHOD
-     */
-    public void insertInitialData(){
-        createCourse(new Course(1,"Wirtschaftsinformatik","Bachelor",false));
-        createCourse(new Course(2,"Informatik","Master",false));
-        createCourse(new Course(3,"Biologie","Bachelor",false));
-
-        createAddress(new Address(1, "Welthandelsplatz", 1, 1020, "Wien", "Austria"));
-
-        createUniversity(new University(1, "Wirtschaftsuniversitaet Wien", 1,"http://www.wu.ac.at/",false));
-
-        linkCourseToUni(1, 1);
-    }
 
     public void closeDB() {
         SQLiteDatabase db = this.getReadableDatabase();

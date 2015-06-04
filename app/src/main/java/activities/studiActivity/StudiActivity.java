@@ -1,5 +1,6 @@
 package activities.studiActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import activities.uniActivity.UniActivity;
 import dataClasses.Course;
 import helper.CourseFilter;
+import helper.database.DataBaseHandler;
 
 import static dataClasses.Course.getCourses;
 
@@ -45,7 +47,6 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studi);
         typeFilter = this.getIntent().getCharExtra("type", 'x');
-
 
         allCourses = Course.getCourses(getApplicationContext());
 
@@ -77,7 +78,13 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
                 System.out.println("Bookmark clicked");
                 FilterBookmarks();
                 return true;
-
+            case R.id.action_settings:
+                new AlertDialog.Builder(this)
+                        .setTitle("Bedienungsanleitung")
+                        .setMessage("Listenelement gedrückt halten, um Lesezeichen zu verwalten.")
+                        .setCancelable(true)
+                        .show();
+                return  true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -135,7 +142,9 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
             c.setFlag(true);
             Toast.makeText(this, "Lesezeichen hinzugefuegt", Toast.LENGTH_SHORT).show();
         }
-        ((ArrayAdapter<Course>) list.getAdapter()).notifyDataSetChanged();
+        DataBaseHandler dbh = DataBaseHandler.getInstance(getApplicationContext());
+        dbh.updateStudiBookmark(c);
+                ((ArrayAdapter<Course>) list.getAdapter()).notifyDataSetChanged();
         return true;
     }
     //endregion
@@ -144,27 +153,30 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
          * Method for filtering the bookmarks is called whenever the user tapped the star button in the action bar
          */
     private void FilterBookmarks() {
-        ArrayList<Course> cList = CourseFilter.filterCoursesByBookmark(allCourses, typeFilter);
-        CourseFilter.filterCoursesByBookmark(cList, bookmarkFilter);
+        ArrayList<Course> clist = Course.getCourses(getApplicationContext());
+        clist = CourseFilter.filterCoursesByType(allCourses,typeFilter);
+        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, CourseFilter.filterCoursesByBookmark(clist, bookmarkFilter)));
 
         //Display all elements
         if(bookmarkFilter == 0 ){
-          Toast.makeText(this,"Alle anzeigen", Toast.LENGTH_SHORT).show();
+            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, CourseFilter.filterCoursesByBookmark(clist, bookmarkFilter)));
+            Toast.makeText(this,"Alle anzeigen", Toast.LENGTH_SHORT).show();
+            bookmarkFilter++;
         }
 
         //Display bookmarks only
         else if(bookmarkFilter == 1){
+            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, CourseFilter.filterCoursesByBookmark(clist, bookmarkFilter)));
             Toast.makeText(this, "Nur Lesezeichen anzeigen", Toast.LENGTH_SHORT).show();
+            bookmarkFilter++;
+
         }
         //Don't display any bookmarks
         else{
+            list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, CourseFilter.filterCoursesByBookmark(clist, bookmarkFilter)));
             Toast.makeText(this,"Keine Lesezeichen anzeigen", Toast.LENGTH_SHORT).show();
-        }
-
-        if(++bookmarkFilter > 1){
             bookmarkFilter = 0;
         }
-        list.setAdapter(new ArrayAdapter<Course>(this, android.R.layout.simple_list_item_1, cList));
     }
     //endregion
 }

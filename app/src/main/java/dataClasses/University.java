@@ -4,13 +4,14 @@ package dataClasses;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import helper.database.DataBaseHandler;
 
 /**
  * Created by matthias rohrmoser on 22.05.2015.
  */
-public class University {
+public class University implements Comparable<University> {
     private int id;
     private String name;
     private int addressId;
@@ -36,7 +37,6 @@ public class University {
         {
             universities = db.queryAllUniversities();
             if(universities == null || universities.isEmpty()) {
-                db.insertInitialData();
                 universities = db.queryAllUniversities();
             }
         }
@@ -94,6 +94,16 @@ public class University {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+
+    public int compare(University lhs, University rhs) {
+        return lhs.getName().compareTo(rhs.getName());
+    }
+
+    @Override
+    public int compareTo(University another) {
+        return compare(this,another);
     }
 
 //

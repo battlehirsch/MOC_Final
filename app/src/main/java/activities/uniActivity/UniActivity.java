@@ -1,5 +1,6 @@
 package activities.uniActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,13 +26,14 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
 
     private ListView list;
     private int bookmarkFilter = 1;
+    private DataBaseHandler dbh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uni);
 
         int courseId = getIntent().getIntExtra("course", -1);
-        DataBaseHandler dbh = DataBaseHandler.getInstance(getApplicationContext());
+        dbh = DataBaseHandler.getInstance(getApplicationContext());
         List<University> universityList;
         if(courseId != -1){
             Course c = dbh.queryCourseById(courseId);
@@ -66,7 +68,13 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
                 System.out.println("Bookmark clicked");
                 FilterBookmarks();
                 return true;
-
+            case R.id.action_settings:
+                new AlertDialog.Builder(this)
+                        .setTitle("Bedienungsanleitung")
+                        .setMessage("Listenelement gedrückt halten, um Lesezeichen zu verwalten.")
+                        .setCancelable(true)
+                        .show();
+                return  true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -138,6 +146,7 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
             u.setFlag(true);
             Toast.makeText(this,"Lesezeichen hinzugefuegt",Toast.LENGTH_SHORT).show();
         }
+        dbh.updateUniBookmark(u);
         ((ArrayAdapter<University>) list.getAdapter()).notifyDataSetChanged();
 
         return  true;

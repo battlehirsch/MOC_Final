@@ -42,7 +42,7 @@ public class CourseFilter {
             }
         }
         //Don't display any bookmarks
-        else{
+        else if(bookmarkFilter != 0){
 
             for (int i = 0; i < coursesToFilter.size(); i++){
                 if(coursesToFilter.get(i).isFlag()){
