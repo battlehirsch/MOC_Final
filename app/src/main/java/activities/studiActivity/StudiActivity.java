@@ -57,7 +57,6 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
         Intent intent = getIntent();
-        System.out.println(intent.getIntExtra("uniId", -1));
     }
 
     @Override
@@ -75,7 +74,6 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
 
         switch (item.getItemId()){
             case R.id.bookmark_studi:
-                System.out.println("Bookmark clicked");
                 FilterBookmarks();
                 return true;
             case R.id.action_settings:
@@ -126,8 +124,6 @@ public class StudiActivity extends ActionBarActivity implements AdapterView.OnIt
      */
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-        System.out.println("Long click");
         Course c = (Course) list.getItemAtPosition(position);
 
         if(c.isFlag())

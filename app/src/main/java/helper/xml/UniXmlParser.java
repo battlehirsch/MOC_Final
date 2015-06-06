@@ -29,7 +29,6 @@ public class UniXmlParser extends XmlParser {
 
 
     public ArrayList<University> parse(){
-        System.out.println("--------------------------------------------------------");
         ArrayList<University> universities = new ArrayList<>();
 
         //get root element ("UNIVERSITIES")
@@ -60,10 +59,9 @@ public class UniXmlParser extends XmlParser {
                         Address adr = new Address();
                         NodeList greatGrandChildren = grandChild.getChildNodes();
                         for (int k = 0; k < greatGrandChildren.getLength(); k++) {
-                            System.out.printf("***" +
-                                    "k=%d ;@; ListLength=%d",k,greatGrandChildren.getLength());
+
                             Node greatGrandChild = greatGrandChildren.item(k);
-                            System.out.println(greatGrandChild.getNodeName());
+
                             if(greatGrandChild.getNodeName().equals("#text"))
                                 continue;
 
@@ -87,7 +85,7 @@ public class UniXmlParser extends XmlParser {
                                     adr.setCountry(greatGrandChild.getTextContent());
                                     break;
                             }//END SWITCH(greatgrandChild)=ADRESS
-                            System.out.println(adr);
+
                             uni.setAddress(adr);
                         }
 
@@ -97,8 +95,7 @@ public class UniXmlParser extends XmlParser {
 
             }
             universities.add(uni);
-            System.out.println(uni);
-            System.out.println("--------------------------------------------------");
+
         }
         return universities;
     }

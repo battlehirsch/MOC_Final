@@ -5,6 +5,7 @@ import android.content.res.Resources;
 
 import com.example.norbe_000.moc_final.R;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import helper.database.DataBaseHandler;
@@ -13,6 +14,7 @@ import dataClasses.University;
 import helper.interfaces.IResourceListener;
 import helper.xml.CourseXmlParser;
 import helper.xml.UniXmlParser;
+import helper.xml.XmlRequester;
 
 /**
  * Created by matthias rohrmoser on 01.06.2015.
@@ -20,10 +22,18 @@ import helper.xml.UniXmlParser;
 public class DataVersionHandler {
     private Context context;
     private IResourceListener listener;
+    private UniXmlParser uniXmlParser;
+    private CourseXmlParser courseXmlParser;
 
 
-    public DataVersionHandler(IResourceListener listener) {
+    public DataVersionHandler(IResourceListener listener, InputStream uniStream, InputStream courseStream) {
         this.listener = listener;
+
+       uniXmlParser =  this.uniXmlParser.getInstance(uniStream);
+       courseXmlParser = this.courseXmlParser.getInstance(courseStream);
+
+
+
     }
 
 
@@ -39,27 +49,23 @@ public class DataVersionHandler {
     //region methods
     private boolean checkCourseVersion() {
         Resources resources = listener.getActivityResources();
-        CourseXmlParser courseParser = CourseXmlParser.getInstance(resources.openRawResource(R.raw.courses));
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
 
-        System.out.printf("COURSE== fileVersion:%f @@@@ databaseVersion:%f\n\n", courseParser.getFileVersion(),dbh.queryFileVersionByName("course"));
-        return (courseParser.getFileVersion() == dbh.queryFileVersionByName("course"));
+        System.out.printf("COURSE== fileVersion:%f @@@@ databaseVersion:%f\n\n", courseXmlParser.getFileVersion(),dbh.queryFileVersionByName("course"));
+        return (courseXmlParser.getFileVersion() == dbh.queryFileVersionByName("course"));
     }
 
     private boolean checkUniversityVersion() {
         Resources resources = listener.getActivityResources();
-        UniXmlParser uniParser = UniXmlParser.getInstance(resources.openRawResource(R.raw.university));
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
-        System.out.printf("UNI== fileVersion:%f @@@@ databaseVersion:%f\n\n", uniParser.getFileVersion(),dbh.queryFileVersionByName("university"));
-        return (uniParser.getFileVersion() == dbh.queryFileVersionByName("university"));
+        return (uniXmlParser.getFileVersion() == dbh.queryFileVersionByName("university"));
     }
 
     public void updateCourse(){
         Resources resources = listener.getActivityResources();
-        CourseXmlParser courseParser = CourseXmlParser.getInstance(resources.openRawResource(R.raw.courses));
-        courseParser.setContext(listener.getActivityContext());
+        courseXmlParser.setContext(listener.getActivityContext());
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
-        ArrayList<Course> courses = courseParser.parse();
+        ArrayList<Course> courses = courseXmlParser.parse();
 
         for(Course c : courses){
             dbh.createCourse(c);
@@ -70,18 +76,17 @@ public class DataVersionHandler {
             }
         }
 
-        dbh.insertFileVersion("course", courseParser.getFileVersion());
+        dbh.insertFileVersion("course", courseXmlParser.getFileVersion());
     }
 
     public void updateUniversity(){
         Resources resources = listener.getActivityResources();
-        UniXmlParser uniParser = UniXmlParser.getInstance(resources.openRawResource(R.raw.university));
         DataBaseHandler dbh = DataBaseHandler.getInstance(listener.getActivityContext());
-        ArrayList<University> unis = uniParser.parse();
+        ArrayList<University> unis = uniXmlParser.parse();
         for(University u : unis)
             dbh.createUniversityFromXml(u);
 
-        dbh.insertFileVersion("university", uniParser.getFileVersion());
+        dbh.insertFileVersion("university", uniXmlParser.getFileVersion());
 
     }
     //endregion

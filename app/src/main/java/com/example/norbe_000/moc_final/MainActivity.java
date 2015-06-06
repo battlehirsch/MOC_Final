@@ -11,12 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
+
 import activities.studiActivity.StudiActivity;
 import activities.uniActivity.UniActivity;
 import helper.DataVersionHandler;
 import helper.DialogHelper;
 import helper.interfaces.IDialogListener;
 import helper.interfaces.IResourceListener;
+import helper.xml.XmlAsyncTask;
+import helper.xml.XmlRequester;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener, IDialogListener, IResourceListener {
@@ -29,7 +34,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new DataVersionHandler(this).fullProcedure();
+
+        try {
+            new XmlAsyncTask().execute(this).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
 
         setContentView(R.layout.activity_main);
         uniButton = (Button) findViewById(R.id.uni_button);

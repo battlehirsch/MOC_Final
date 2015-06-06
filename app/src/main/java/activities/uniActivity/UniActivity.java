@@ -65,7 +65,6 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.bookmark_uni:
-                System.out.println("Bookmark clicked");
                 FilterBookmarks();
                 return true;
             case R.id.action_settings:
@@ -82,7 +81,6 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
 
     private void FilterBookmarks() {
         ArrayList<University> uList = new ArrayList<>(University.getUniversities(getApplicationContext()));
-        System.out.println("Filter == " + bookmarkFilter);
 
         //Alle Elemente anzeigen
         if(bookmarkFilter == 0 ){
@@ -124,7 +122,6 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("item " + position);
         Intent intent = new Intent(this, MapsActivity.class);
         intent.putExtra("address", ((University) list.getItemAtPosition(position)).getAddress().toString());
         intent.putExtra("name", ((University) list.getItemAtPosition(position)).getName());
@@ -134,7 +131,6 @@ public class UniActivity extends ActionBarActivity implements AdapterView.OnItem
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("Long click");
         University u = (University) list.getItemAtPosition(position);
         if(u.isFlag())
         {
